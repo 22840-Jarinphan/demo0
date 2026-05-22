@@ -122,6 +122,7 @@
 
         .info-value {
             color: #555;
+            flex: 1;
         }
 
         .footer-tag {
@@ -143,36 +144,3 @@
         <div class="content">
             <h1 class="name">ด.ญ.จรินทร์พรรณ แก้วเคียงคำ</h1>
             <p class="nickname">ชื่อเล่น: <strong>น้องสตางค์</strong></p>
-
-            <div class="info-list">
-                <div class="info-item">
-                    <i class="fa-solid fa-cake-candles"></i>
-                    <span class="info-label">วันเกิด:</span>
-                    <span class="info-value">17 ตุลาคม 2554</span>
-                </div>
-
-                <div class="info-item">
-                    <i class="fa-solid fa-utensils"></i>
-                    <span class="info-label">ของโปรด:</span>
-                    <span class="info-value">ข้าวซอย</span>
-                </div>
-
-                <div class="info-item">
-                    <i class="fa-solid fa-palette"></i>
-                    <span class="info-label">สีที่ชอบ:</span>
-                    <span class="info-value" style="color: #d90429; font-weight: bold;">สีแดง</span>
-                </div>
-
-                <div class="info-item">
-                    <i class="fa-solid fa-flask"></i>
-                    <span class="info-label">วิชาที่ชอบ:</span>
-                    <span class="info-value">วิทยาศาสตร์</span>
-                </div>
-            </div>
-
-            <p class="footer-tag">Nice to meet you! ✨</p>
-        </div>
-    </div>
-
-</body>
-</html>
