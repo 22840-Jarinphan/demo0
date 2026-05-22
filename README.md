@@ -114,33 +114,4 @@
         }
 
         .info-label {
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-right: 10px;
-            min-width: 90px;
-        }
-
-        .info-value {
-            color: #555;
-            flex: 1;
-        }
-
-        .footer-tag {
-            margin-top: 25px;
-            font-size: 0.9rem;
-            color: #bbb;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="profile-card">
-        <div class="header-bg">
-            <div class="profile-img">
-                <i class="fa-solid fa-user-tie"></i>
-            </div>
-        </div>
-
-        <div class="content">
-            <h1 class="name">ด.ญ.จรินทร์พรรณ แก้วเคียงคำ</h1>
-            <p class="nickname">ชื่อเล่น: <strong>น้องสตางค์</strong></p>
+            font-weight: 6
