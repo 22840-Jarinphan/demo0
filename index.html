@@ -124,6 +124,41 @@
             color: #555;
         }
 
+        /* ส่วนที่เพิ่มใหม่: เพื่อนสนิท */
+        .friends-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fdf2f2;
+            border-radius: 15px;
+        }
+
+        .friends-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .friends-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .friend-tag {
+            background: white;
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #ffcccc;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
         .footer-tag {
             margin-top: 25px;
             font-size: 0.9rem;
@@ -167,6 +202,18 @@
                     <i class="fa-solid fa-flask"></i>
                     <span class="info-label">วิชาที่ชอบ:</span>
                     <span class="info-value">วิทยาศาสตร์</span>
+                </div>
+            </div>
+
+            <div class="friends-section">
+                <p class="friends-title">
+                    <i class="fa-solid fa-heart"></i> เพื่อนสนิท
+                </p>
+                <div class="friends-list">
+                    <span class="friend-tag">อิ่มเอม</span>
+                    <span class="friend-tag">ปั้นหยา</span>
+                    <span class="friend-tag">แก้มหอม</span>
+                    <span class="friend-tag">เมกาน</span>
                 </div>
             </div>
 
