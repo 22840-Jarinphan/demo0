@@ -1,246 +1,64 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile | จรินทร์พรรณ แก้วเคียงคำ</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --primary-color: #e63946; 
-            --secondary-color: #f1faee;
-            --text-dark: #1d3557;
-            --bg-gradient: linear-gradient(135deg, #ff4d4d 0%, #a70000 100%);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Kanit', sans-serif;
-        }
-
-        body {
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-
-        .profile-card {
-            background: white;
-            width: 100%;
-            max-width: 500px;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
-        }
-
-        .header-bg {
-            background: var(--bg-gradient);
-            height: 140px;
-            position: relative;
-        }
-
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            background: #fff;
-            border-radius: 50%;
-            position: absolute;
-            bottom: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            border: 5px solid white;
-        }
-
-        .profile-img i {
-            font-size: 55px;
-            color: var(--primary-color);
-        }
-
-        .content {
-            padding: 70px 25px 30px;
-            text-align: center;
-        }
-
-        .name {
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .school-info {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            text-align: left;
-            margin-top: 10px;
-        }
-
-        .info-item {
-            padding: 10px 15px;
-            background: #fffafa;
-            border-radius: 15px;
-            border-left: 4px solid var(--primary-color);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .info-label {
-            font-size: 0.8rem;
-            color: #888;
-            font-weight: 400;
-        }
-
-        .info-value {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-
-        .full-width {
-            grid-column: span 2;
-        }
-
-        .motto-box {
-            margin-top: 20px;
-            padding: 15px;
-            background: var(--secondary-color);
-            border-radius: 15px;
-            font-style: italic;
-            color: var(--text-dark);
-            border: 1px dashed var(--primary-color);
-        }
-
-        .section-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin: 20px 0 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tag-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-        }
-
-        .tag {
-            background: white;
-            color: var(--text-dark);
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            border: 1px solid #eee;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .footer-text {
-            margin-top: 25px;
-            font-size: 0.8rem;
-            color: #ccc;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="profile-card">
-        <div class="header-bg">
-            <div class="profile-img">
-                <i class="fa-solid fa-user-nurse"></i>
-            </div>
-        </div>
-
-        <div class="content">
-            <h1 class="name">ด.ญ.จรินทร์พรรณ แก้วเคียงคำ (สตางค์)</h1>
-            <p class="school-info">โรงเรียนจอมทอง | ชั้นมัธยมศึกษาปีที่ 3/2</p>
-
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="info-label"><i class="fa-solid fa-cake-candles"></i> วันเกิด</span>
-                    <span class="info-value">17 ต.ค. 2554</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><i class="fa-solid fa-droplet"></i> กรุ๊ปเลือด / ราศี</span>
-                    <span class="info-value">O / ตุลย์</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><i class="fa-solid fa-location-dot"></i> ภูมิลำเนา</span>
-                    <span class="info-value">เชียงใหม่</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><i class="fa-solid fa-arrows-up-down"></i> ส่วนสูง</span>
-                    <span class="info-value">162 ซ.ม.</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><i class="fa-solid fa-utensils"></i> อาหารโปรด</span>
-                    <span class="info-value">ข้าวคลุกกะปิ</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><i class="fa-solid fa-palette"></i> สีที่ชอบ</span>
-                    <span class="info-value" style="color: var(--primary-color);">สีแดง</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><i class="fa-solid fa-flask"></i> วิชาที่ชอบ</span>
-                    <span class="info-value">วิทยาศาสตร์</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><i class="fa-solid fa-brain"></i> วิชาที่ยาก</span>
-                    <span class="info-value">วิทยาศาสตร์</span>
-                </div>
-                <div class="info-item full-width">
-                    <span class="info-label"><i class="fa-solid fa-star"></i> ความฝัน</span>
-                    <span class="info-value">พยาบาล</span>
-                </div>
-            </div>
-
-            <p class="section-title"><i class="fa-solid fa-heart"></i> สิ่งที่ชอบ & งานอดิเรก</p>
-            <div class="tag-container">
-                <span class="tag">ดูอนิเมะ (เซอร์แวมพ์)</span>
-                <span class="tag">วาดรูป</span>
-                <span class="tag">ร้องเพลง</span>
-                <span class="tag">Karaoke</span>
-                <span class="tag">เปตอง</span>
-                <span class="tag">ยังโอม (YOUNGOHM)</span>
-            </div>
-
-            <p class="section-title"><i class="fa-solid fa-users"></i> เพื่อนสนิท</p>
-            <div class="tag-container">
-                <span class="tag">ปั้นหยา</span>
-                <span class="tag">อิ่มเอม</span>
-                <span class="tag">แก้มหอม</span>
-                <span class="tag">เมกาน</span>
-            </div>
-
-            <div class="motto-box">
-                "ความพยายามอยู่ที่ไหน ความสำเร็จอยู่ที่นั่น"
-            </div>
-
-            <p class="footer-text">Nice to meet you! ✨</p>
-        </div>
+<div class="profile-card">
+    <div class="header-bg">
+        <div class="profile-img">
+            <i class="fa-solid fa-user-nurse"></i> </div>
     </div>
 
+    <div class="content">
+        <h1 class="name">ด.ญ.จรินทร์พรรณ แก้วเคียงคำ</h1>
+        <p class="nickname">ชื่อเล่น: <strong>น้องสตางค์</strong> | ชั้น ม.3/2</p>
+        
+        <p style="color: #666; margin-top: -15px; font-size: 0.9rem;">โรงเรียนจอมทอง</p>
+
+        <div class="info-list">
+            <div class="info-item">
+                <i class="fa-solid fa-cake-candles"></i>
+                <span class="info-label">ข้อมูลส่วนตัว:</span>
+                <span class="info-value">17 ต.ค. 2554 (ราศีตุลย์) | กรุ๊ป O</span>
+            </div>
+
+            <div class="info-item" style="background: #fff0f0; border-left-color: #ff4d4d;">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <span class="info-label">ความฝัน:</span>
+                <span class="info-value" style="font-weight: bold; color: var(--primary-color);">พยาบาล</span>
+            </div>
+
+            <div class="info-item">
+                <i class="fa-solid fa-book-open"></i>
+                <span class="info-label">การเรียน:</span>
+                <span class="info-value">ชอบวิทย์ (แต่ก็แอบยากนะ!)</span>
+            </div>
+
+            <div class="info-item">
+                <i class="fa-solid fa-palette"></i>
+                <span class="info-label">งานอดิเรก:</span>
+                <span class="info-value">วาดรูป, ดูเซอร์แวมพ์, ร้องเพลง</span>
+            </div>
+
+            <div class="info-item">
+                <i class="fa-solid fa-star"></i>
+                <span class="info-label">ของโปรด:</span>
+                <span class="info-value">ข้าวคลุกกะปิ, สีแดง, เพลง YOUNGOHM</span>
+            </div>
+        </div>
+
+        <div class="friends-section">
+            <p class="friends-title"><i class="fa-solid fa-users"></i> เพื่อนสนิท</p>
+            <div class="friends-list">
+                <span class="friend-tag">ปั้นหยา</span>
+                <span class="friend-tag">อิ่มเอม</span>
+                <span class="friend-tag">แก้มหอม</span>
+                <span class="friend-tag">เมกาน</span>
+            </div>
+        </div>
+
+        <blockquote style="margin-top: 20px; font-style: italic; color: #888;">
+            "ความพยายามอยู่ที่ไหน ความสำเร็จอยู่ที่นั่น"
+        </blockquote>
+
+        <p class="footer-tag">Nice to meet you! ✨</p>
+    </div>
+</div>
+
 </body>
-</html>
+</html>     
