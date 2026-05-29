@@ -3,226 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile | จรินทร์พรรณ แก้วเคียงคำ</title>
+    <title>Stang's Profile | จรินทร์พรรณ</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Itim&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary-color: #e63946; 
-            --secondary-color: #f1faee;
-            --text-dark: #1d3557;
-            --bg-gradient: linear-gradient(135deg, #ff4d4d 0%, #a70000 100%);
+            --primary: #ff4d6d;
+            --secondary: #ffccd5;
+            --accent: #c9184a;
+            --dark: #590d22;
+            --glass: rgba(255, 255, 255, 0.9);
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            margin: 0; padding: 0; box-sizing: border-box;
             font-family: 'Kanit', sans-serif;
         }
 
         body {
-            background-color: #f0f2f5;
+            background: #fff0f3;
+            background-image: 
+                radial-gradient(circle at 20% 30%, #ffb3c1 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, #ff85a1 0%, transparent 20%);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            padding: 40px 20px;
+            overflow-x: hidden;
         }
 
-        .profile-card {
-            background: white;
+        /* พื้นหลังขยับได้แบบ Anime */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: moveBg 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveBg {
+            from { background-position: 0 0; }
+            to { background-position: 500px 1000px; }
+        }
+
+        .container {
             width: 100%;
-            max-width: 500px;
-            border-radius: 25px;
+            max-width: 600px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 4px solid white;
+            box-shadow: 0 20px 50px rgba(255, 77, 109, 0.2);
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            position: relative;
+            animation: fadeIn 1s ease-out;
         }
 
-        .header-bg {
-            background: var(--bg-gradient);
-            height: 140px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header ส่วนบน */
+        .banner {
+            height: 180px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
             position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .anime-gif {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 80px;
+            filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.2));
+        }
+
+        .profile-img-container {
+            position: absolute;
+            bottom: -60px;
+            width: 140px;
+            height: 140px;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .profile-img {
-            width: 120px;
-            height: 120px;
-            background: #fff;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            position: absolute;
-            bottom: -60px;
-            left: 50%;
-            transform: translateX(-50%);
+            background: var(--secondary);
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 5px solid white;
+            overflow: hidden;
         }
 
-        .profile-img i {
-            font-size: 55px;
-            color: var(--primary-color);
-        }
+        .profile-img i { font-size: 70px; color: var(--primary); }
 
-        .content {
-            padding: 70px 25px 30px;
-        }
-
-        .name-section {
+        /* เนื้อหาหลัก */
+        .main-content {
+            padding: 80px 30px 30px;
             text-align: center;
+        }
+
+        .name-title {
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .school-tag {
+            background: var(--primary);
+            color: white;
+            padding: 2px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .motto {
+            font-family: 'Itim', cursive;
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            padding: 10px;
+            border-top: 1px dashed var(--primary);
+            border-bottom: 1px dashed var(--primary);
+        }
+
+        /* จัดหมวดหมู่ */
+        .grid-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            text-align: left;
             margin-bottom: 25px;
         }
 
-        .name {
-            font-size: 1.5rem;
-            color: var(--text-dark);
+        .info-card {
+            background: white;
+            padding: 12px;
+            border-radius: 15px;
+            border: 1px solid var(--secondary);
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: scale(1.05);
+            background: var(--secondary);
+        }
+
+        .info-card h4 {
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .info-card p {
+            color: var(--dark);
             font-weight: 600;
         }
 
-        .nickname {
+        /* หมวดหมู่ใหญ่ */
+        .section-box {
+            background: rgba(255, 77, 109, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .section-title {
+            color: var(--accent);
             font-size: 1.1rem;
-            color: var(--primary-color);
-        }
-
-        /* Category Styling */
-        .category-title {
-            font-size: 1rem;
-            color: var(--primary-color);
-            border-bottom: 2px solid #eee;
-            margin: 20px 0 10px;
-            padding-bottom: 5px;
-            font-weight: 600;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 5px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
             gap: 8px;
         }
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .info-item {
-            padding: 8px 12px;
-            background: #fdf2f2;
+        .tag {
+            background: white;
+            padding: 5px 12px;
             border-radius: 10px;
             font-size: 0.9rem;
+            color: var(--dark);
+            border: 1px solid var(--secondary);
         }
 
-        .info-label {
-            font-weight: 600;
-            color: var(--text-dark);
-            display: block;
-            font-size: 0.8rem;
-            opacity: 0.8;
-        }
+        .tag.heart { border-left: 4px solid var(--primary); }
 
-        .info-value {
-            color: #333;
-        }
-
-        .full-width {
-            grid-column: span 2;
-        }
-
-        /* Quote */
-        .quote-box {
-            background: var(--text-dark);
-            color: white;
-            padding: 15px;
-            border-radius: 15px;
-            text-align: center;
+        .footer {
             margin-top: 20px;
-            font-style: italic;
+            font-size: 0.8rem;
+            color: #999;
         }
 
-        /* Friends Tags */
-        .friends-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 5px;
-        }
-
-        .friend-tag {
-            background: white;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 2px 10px;
-            border-radius: 15px;
-            font-size: 0.85rem;
+        /* Responsive */
+        @media (max-width: 480px) {
+            .grid-info { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="profile-card">
-        <div class="header-bg">
-            <div class="profile-img">
-                <i class="fa-solid fa-user-graduate"></i>
+    <div class="container">
+        <div class="banner">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqZndpZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/3o7TKMGpx4H7E1J9de/giphy.gif" class="anime-gif" alt="anime-sparkle">
+            <div class="profile-img-container">
+                <div class="profile-img">
+                    <i class="fa-solid fa-wand-sparkles"></i>
+                </div>
             </div>
         </div>
 
-        <div class="content">
-            <div class="name-section">
-                <h1 class="name">ด.ญ.จรินทร์พรรณ แก้วเคียงคำ</h1>
-                <p class="nickname">ชื่อเล่น: <strong>สตางค์</strong></p>
+        <div class="main-content">
+            <h1 class="name-title">ด.ญ.จรินทร์พรรณ แก้วเคียงคำ</h1>
+            <p style="color: var(--primary); font-weight: bold; margin-bottom: 10px;">Nickname: น้องสตางค์ ✨</p>
+            <div class="school-tag">โรงเรียนจอมทอง | ชั้น ม.3/2</div>
+
+            <div class="motto">
+                "คติประจำใจ: ความพยายามอยู่ที่ไหน ความสำเร็จอยู่ที่นั่น"
             </div>
 
-            <div class="category-title"><i class="fa-solid fa-address-card"></i> ข้อมูลส่วนตัว</div>
-            <div class="info-grid">
-                <div class="info-item"><span class="info-label">วันเกิด</span><span class="info-value">17 ต.ค. 2554</span></div>
-                <div class="info-item"><span class="info-label">เพศ/กรุ๊ปเลือด</span><span class="info-value">หญิง / O</span></div>
-                <div class="info-item"><span class="info-label">ส่วนสูง</span><span class="info-value">162 ซ.ม.</span></div>
-                <div class="info-item"><span class="info-label">ราศี</span><span class="info-value">ตุลย์</span></div>
-                <div class="info-item full-width"><span class="info-label">ภูมิลำเนา</span><span class="info-value">จ.เชียงใหม่</span></div>
-            </div>
-
-            <div class="category-title"><i class="fa-solid fa-school"></i> การศึกษา & กิจกรรม</div>
-            <div class="info-grid">
-                <div class="info-item"><span class="info-label">โรงเรียน</span><span class="info-value">จอมทอง</span></div>
-                <div class="info-item"><span class="info-label">ระดับชั้น</span><span class="info-value">ม.3/2</span></div>
-                <div class="info-item"><span class="info-label">วิชาที่ชอบ</span><span class="info-value">วิทยาศาสตร์</span></div>
-                <div class="info-item"><span class="info-label">วิชาที่ยาก</span><span class="info-value">วิทยาศาสตร์</span></div>
-                <div class="info-item"><span class="info-label">ชมรม</span><span class="info-value">Karaoke</span></div>
-                <div class="info-item"><span class="info-label">ทักษะ</span><span class="info-value">วาดรูป, ร้องเพลง</span></div>
-            </div>
-
-            <div class="category-title"><i class="fa-solid fa-heart"></i> สิ่งที่ชอบ & งานอดิเรก</div>
-            <div class="info-grid">
-                <div class="info-item"><span class="info-label">อาหารโปรด</span><span class="info-value">ข้าวคลุกกะปิ</span></div>
-                <div class="info-item"><span class="info-label">สีที่ชอบ</span><span class="info-value" style="color:red">แดง</span></div>
-                <div class="info-item"><span class="info-label">งานอดิเรก</span><span class="info-value">ดูอนิเมะ, วาดรูป</span></div>
-                <div class="info-item"><span class="info-label">กีฬา</span><span class="info-value">เปตอง</span></div>
-                <div class="info-item full-width"><span class="info-label">เพลง/ซีรีส์</span><span class="info-value">YOUNGOHM / Servamp</span></div>
-            </div>
-
-            <div class="category-title"><i class="fa-solid fa-star"></i> เพื่อนสนิท & ความฝัน</div>
-            <div class="info-grid">
-                <div class="info-item full-width">
-                    <span class="info-label">เพื่อนสนิท</span>
-                    <div class="friends-list">
-                        <span class="friend-tag">ปั้นหยา</span>
-                        <span class="friend-tag">อิ่มเอม</span>
-                        <span class="friend-tag">แก้มหอม</span>
-                        <span class="friend-tag">เมกาน</span>
-                    </div>
+            <div class="grid-info">
+                <div class="info-card">
+                    <h4><i class="fa-solid fa-cake-candles"></i> Birthday</h4>
+                    <p>17 ต.ค. 2554 (ราศีตุลย์)</p>
                 </div>
-                <div class="info-item full-width">
-                    <span class="info-label">ความฝันในอนาคต</span>
-                    <span class="info-value"><i class="fa-solid fa-user-nurse"></i> อยากเป็นพยาบาล</span>
+                <div class="info-card">
+                    <h4><i class="fa-solid fa-droplet"></i> Blood Group</h4>
+                    <p>กรุ๊ป O</p>
+                </div>
+                <div class="info-card">
+                    <h4><i class="fa-solid fa-arrows-up-down"></i> Height</h4>
+                    <p>162 ซ.ม.</p>
+                </div>
+                <div class="info-card">
+                    <h4><i class="fa-solid fa-location-dot"></i> Hometown</h4>
+                    <p>เชียงใหม่</p>
                 </div>
             </div>
 
-            <div class="quote-box">
-                "ความพยายามอยู่ที่ไหน ความสำเร็จอยู่ที่นั่น"
+            <div class="section-box">
+                <h3 class="section-title"><i class="fa-solid fa-graduation-cap"></i> การเรียน & ความฝัน</h3>
+                <div class="tag-container">
+                    <span class="tag">วิชาที่ชอบ: วิทยาศาสตร์ 🧪</span>
+                    <span class="tag">วิชาที่ยาก: วิทยาศาสตร์ 🧬</span>
+                    <span class="tag">ชมรม: Karaoke 🎤</span>
+                    <span class="tag" style="background: #fff0f3; border: 1px solid var(--primary); font-weight: bold;">
+                        อาชีพในฝัน: พยาบาล 👩‍⚕️
+                    </span>
+                </div>
             </div>
 
+            <div class="section-box">
+                <h3 class="section-title"><i class="fa-solid fa-heart"></i> My Favorites</h3>
+                <div class="tag-container">
+                    <span class="tag">อาหาร: ข้าวคลุกกะปิ 🍛</span>
+                    <span class="tag">สีที่ชอบ: สีแดง ❤️</span>
+                    <span class="tag">เพลง: YOUNGOHM 🎧</span>
+                    <span class="tag">อนิเมะ: Servamp 🦇</span>
+                    <span class="tag">งานอดิเรก: วาดรูป, ดูอนิเมะ 🎨</span>
+                    <span class="tag">กีฬา: เปตอง 🏐</span>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <h3 class="section-title"><i class="fa-solid fa-star"></i> Friends & Skills</h3>
+                <p style="font-size: 0.8rem; color: var(--primary); margin-bottom: 10px;">Best Friends:</p>
+                <div class="tag-container" style="margin-bottom: 15px;">
+                    <span class="tag heart">อิ่มเอม</span>
+                    <span class="tag heart">ปั้นหยา</span>
+                    <span class="tag heart">แก้มหอม</span>
+                    <span class="tag heart">เมกาน</span>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--primary); margin-bottom: 10px;">Skills:</p>
+                <div class="tag-container">
+                    <span class="tag">วาดรูป 🖌️</span>
+                    <span class="tag">ร้องเพลง 🎶</span>
+                </div>
+            </div>
+
+            <p class="footer">Made with Love & Sparkles ✨</p>
         </div>
     </div>
 
