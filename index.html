@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile | น้องสตางค์ ✨</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Mitr:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary-color: #ff4d6d; /* สีชมพูแดงฟรุ้งฟริ้ง */
-            --secondary-color: #fff0f3;
-            --text-dark: #590d22;
-            --bg-gradient: linear-gradient(135deg, #ff758f 0%, #ff4d6d 100%);
+            --primary-pink: #ff85a1;
+            --soft-red: #e63946;
+            --sparkle-gold: #ffd700;
+            --bg-pastel: #fff0f3;
         }
 
         * {
@@ -24,89 +24,96 @@
         }
 
         body {
-            background-color: #fff5f8;
+            background-color: var(--bg-pastel);
+            overflow-x: hidden;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
             padding: 40px 20px;
-            overflow-x: hidden;
             position: relative;
         }
 
-        /* --- เอฟเฟกต์กระต่ายลอย --- */
-        .rabbit {
+        /* --- เอฟเฟกต์ประกายระยิบระยับ --- */
+        body::before {
+            content: "";
             position: fixed;
-            font-size: 2rem;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
             pointer-events: none;
-            z-index: 0;
-            animation: float 10s linear infinite;
-            opacity: 0.6;
+            animation: sparkle 10s linear infinite;
+            z-index: 1;
         }
 
-        @keyframes float {
-            0% { transform: translateY(100vh) translateX(0) rotate(0deg); }
-            100% { transform: translateY(-10vh) translateX(100px) rotate(360deg); }
+        @keyframes sparkle {
+            0% { background-position: 0 0; }
+            100% { background-position: 500px 500px; }
         }
 
-        /* --- เอฟเฟกต์ประกายวิบวับ --- */
-        .sparkle {
+        /* --- น้องกระต่ายลอยไปมา --- */
+        .bunny {
             position: fixed;
-            width: 5px;
-            height: 5px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 10px 2px white;
-            animation: twinkle 2s infinite;
+            font-size: 50px;
+            z-index: 0;
+            user-select: none;
+            pointer-events: none;
+            animation: floatBunny 15s linear infinite;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
+        @keyframes floatBunny {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(100vw, -100vh) rotate(360deg); opacity: 0; }
         }
 
+        /* --- Profile Card --- */
         .profile-card {
             background: rgba(255, 255, 255, 0.9);
             width: 100%;
             max-width: 500px;
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(255, 77, 109, 0.2);
-            transition: transform 0.3s ease;
+            box-shadow: 0 20px 50px rgba(255, 133, 161, 0.3);
             position: relative;
             z-index: 10;
-            border: 4px solid #fff;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-5px);
+            border: 4px solid white;
+            backdrop-filter: blur(5px);
         }
 
         .header-bg {
-            background: var(--bg-gradient);
+            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
             height: 150px;
             position: relative;
+            display: flex;
+            justify-content: center;
         }
 
         .profile-img {
             width: 140px;
             height: 140px;
-            background: #fff;
+            background: white;
             border-radius: 50%;
             position: absolute;
             bottom: -70px;
-            left: 50%;
-            transform: translateX(-50%);
             display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            border: 6px solid white;
+            border: 6px solid #fff;
         }
 
         .profile-img i {
             font-size: 70px;
-            color: var(--primary-color);
+            color: var(--soft-red);
+            animation: heartBeat 1.5s infinite;
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         .content {
@@ -116,25 +123,28 @@
 
         .name {
             font-size: 1.8rem;
-            color: var(--text-dark);
+            color: #d90429;
             font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
         }
 
         .motto {
-            font-size: 0.9rem;
-            color: #ff4d6d;
-            margin: 10px 0 20px;
             font-style: italic;
+            color: #888;
+            margin: 10px 0 20px;
+            font-size: 0.95rem;
         }
 
+        /* --- การแยกประเภทข้อมูล --- */
         .section-title {
-            background: var(--primary-color);
+            background: var(--soft-red);
             color: white;
-            padding: 5px 15px;
+            padding: 5px 20px;
             border-radius: 20px;
             display: inline-block;
             margin: 15px 0 10px;
             font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.3);
         }
 
         .info-grid {
@@ -144,125 +154,127 @@
             text-align: left;
         }
 
-        .info-item {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            background: #fff0f3;
+        .info-box {
+            background: #fffafa;
+            padding: 10px 15px;
             border-radius: 15px;
-            font-size: 0.85rem;
+            border: 1px solid #ffe5ec;
+            display: flex;
+            flex-direction: column;
         }
 
-        .info-item i {
-            width: 25px;
-            color: var(--primary-color);
-            margin-right: 5px;
-        }
-
-        .info-label {
+        .label {
+            font-size: 0.8rem;
+            color: #ff85a1;
             font-weight: 600;
-            color: var(--text-dark);
-            margin-right: 5px;
         }
 
-        .friends-list {
+        .value {
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .full-width { grid-column: span 2; }
+
+        /* --- เพื่อนสนิท --- */
+        .tag-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
             gap: 8px;
+            justify-content: center;
             margin-top: 10px;
         }
 
-        .friend-tag {
+        .tag {
             background: white;
-            color: var(--primary-color);
+            border: 2px solid var(--primary-pink);
+            color: var(--soft-red);
             padding: 4px 12px;
             border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid #ffb3c1;
+            font-size: 0.85rem;
+            transition: 0.3s;
         }
 
-        .footer-tag {
+        .tag:hover {
+            background: var(--primary-pink);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .footer {
             margin-top: 30px;
+            color: #ff85a1;
             font-size: 0.8rem;
-            color: #ffb3c1;
-            animation: bounce 2s infinite;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
     </style>
 </head>
 <body>
 
-    <div class="rabbit" style="left: 10%; animation-delay: 0s;">🐰</div>
-    <div class="rabbit" style="left: 30%; animation-delay: 2s;">🐇</div>
-    <div class="rabbit" style="left: 60%; animation-delay: 4s;">🐰</div>
-    <div class="rabbit" style="left: 80%; animation-delay: 1s;">🐇</div>
-    <div class="rabbit" style="left: 45%; animation-delay: 6s;">🐰</div>
-
-    <div class="sparkle" style="top: 20%; left: 15%;"></div>
-    <div class="sparkle" style="top: 50%; left: 85%;"></div>
-    <div class="sparkle" style="top: 80%; left: 10%;"></div>
+    <div class="bunny" style="left: 5%; bottom: -10%; animation-delay: 0s;">🐰</div>
+    <div class="bunny" style="left: 20%; bottom: -10%; animation-delay: 3s;">🐰</div>
+    <div class="bunny" style="left: 40%; bottom: -10%; animation-delay: 6s;">🐰</div>
+    <div class="bunny" style="left: 60%; bottom: -10%; animation-delay: 1s;">🐰</div>
+    <div class="bunny" style="left: 80%; bottom: -10%; animation-delay: 4s;">🐰</div>
+    <div class="bunny" style="left: 15%; bottom: -15%; animation-delay: 8s;">✨</div>
+    <div class="bunny" style="left: 35%; bottom: -15%; animation-delay: 2s;">🐰</div>
+    <div class="bunny" style="left: 55%; bottom: -15%; animation-delay: 10s;">🐰</div>
+    <div class="bunny" style="left: 75%; bottom: -15%; animation-delay: 5s;">🐰</div>
+    <div class="bunny" style="left: 90%; bottom: -15%; animation-delay: 7s;">🐰</div>
 
     <div class="profile-card">
         <div class="header-bg">
             <div class="profile-img">
-                <i class="fa-solid fa-face-grin-stars"></i>
+                <i class="fa-solid fa-face-smile-beam"></i>
             </div>
         </div>
 
         <div class="content">
-            <h1 class="name">น้องสตางค์</h1>
-            <p style="color: #888;">ด.ญ.จรินทร์พรรณ แก้วเคียงคำ</p>
-            <p class="motto">"{{คติประจำใจ: ความพยายามอยู่ที่ไหน ความสำเร็จอยู่ที่นั่น}}"</p>
+            <h1 class="name">ด.ญ.จรินทร์พรรณ แก้วเคียงคำ</h1>
+            <p style="color: var(--soft-red); font-weight: bold;">( น้องสตางค์ )</p>
+            <p class="motto">"ความพยายามอยู่ที่ไหน ความสำเร็จอยู่ที่นั่น"</p>
 
             <div class="section-title"><i class="fa-solid fa-user"></i> ข้อมูลส่วนตัว</div>
             <div class="info-grid">
-                <div class="info-item"><i class="fa-solid fa-venus"></i> <span class="info-label">เพศ:</span> หญิง</div>
-                <div class="info-item"><i class="fa-solid fa-droplet"></i> <span class="info-label">เลือด:</span> O</div>
-                <div class="info-item"><i class="fa-solid fa-cake-candles"></i> <span class="info-label">เกิด:</span> 17 ต.ค. 54</div>
-                <div class="info-item"><i class="fa-solid fa-star"></i> <span class="info-label">ราศี:</span> ตุลย์</div>
-                <div class="info-item"><i class="fa-solid fa-arrows-up-down"></i> <span class="info-label">สูง:</span> 162 ซม.</div>
-                <div class="info-item"><i class="fa-solid fa-map-location-dot"></i> <span class="info-label">ที่อยู่:</span> เชียงใหม่</div>
+                <div class="info-box"><span class="label">เพศ</span><span class="value">หญิง</span></div>
+                <div class="info-box"><span class="label">วันเกิด</span><span class="value">17 ต.ค. 2554</span></div>
+                <div class="info-box"><span class="label">กรุ๊ปเลือด</span><span class="value">O</span></div>
+                <div class="info-box"><span class="label">ราศี</span><span class="value">ตุลย์</span></div>
+                <div class="info-box"><span class="label">ส่วนสูง</span><span class="value">162 ซ.ม.</span></div>
+                <div class="info-box"><span class="label">ภูมิลำเนา</span><span class="value">เชียงใหม่</span></div>
             </div>
 
             <div class="section-title"><i class="fa-solid fa-graduation-cap"></i> การศึกษา</div>
             <div class="info-grid">
-                <div class="info-item"><i class="fa-solid fa-school"></i> <span class="info-label">โรงเรียน:</span> จอมทอง</div>
-                <div class="info-item"><i class="fa-solid fa-book-open"></i> <span class="info-label">ชั้น:</span> ม.3/2</div>
-                <div class="info-item"><i class="fa-solid fa-heart-pulse"></i> <span class="info-label">ชอบ:</span> วิทย์</div>
-                <div class="info-item"><i class="fa-solid fa-brain"></i> <span class="info-label">ยาก:</span> วิทย์</div>
+                <div class="info-box"><span class="label">โรงเรียน</span><span class="value">จอมทอง</span></div>
+                <div class="info-box"><span class="label">ระดับชั้น</span><span class="value">ม.3/2</span></div>
+                <div class="info-box"><span class="label">วิชาที่ชอบ</span><span class="value">วิทยาศาสตร์ 🧪</span></div>
+                <div class="info-box"><span class="label">วิชาที่ยาก</span><span class="value">วิทยาศาสตร์ 😅</span></div>
             </div>
 
-            <div class="section-title"><i class="fa-solid fa-icons"></i> ความชอบ & ไลฟ์สไตล์</div>
+            <div class="section-title"><i class="fa-solid fa-heart"></i> ความชอบ & งานอดิเรก</div>
             <div class="info-grid">
-                <div class="info-item"><i class="fa-solid fa-utensils"></i> <span class="info-label">อาหาร:</span> ข้าวคลุกกะปิ</div>
-                <div class="info-item"><i class="fa-solid fa-palette"></i> <span class="info-label">สีที่ชอบ:</span> แดง ❤️</div>
-                <div class="info-item"><i class="fa-solid fa-gamepad"></i> <span class="info-label">งานอดิเรก:</span> ดูอนิเมะ</div>
-                <div class="info-item"><i class="fa-solid fa-volleyball"></i> <span class="info-label">กีฬา:</span> เปตอง</div>
-                <div class="info-item"><i class="fa-solid fa-music"></i> <span class="info-label">เพลง:</span> YOUNGOHM</div>
-                <div class="info-item"><i class="fa-solid fa-tv"></i> <span class="info-label">อนิเมะ:</span> Servamp</div>
+                <div class="info-box"><span class="label">อาหารโปรด</span><span class="value">ข้าวคลุกกะปิ</span></div>
+                <div class="info-box"><span class="label">สีที่ชอบ</span><span class="value" style="color:red">แดง ❤️</span></div>
+                <div class="info-box"><span class="label">งานอดิเรก</span><span class="value">ดูอนิเมะ, วาดรูป</span></div>
+                <div class="info-box"><span class="label">กีฬา</span><span class="value">เปตอง</span></div>
+                <div class="info-box"><span class="label">อนิเมะ</span><span class="value">เซอร์แวมพ์</span></div>
+                <div class="info-box"><span class="label">เพลง</span><span class="value">YOUNGOHM</span></div>
+                <div class="info-box full-width"><span class="label">ความฝัน</span><span class="value">อยากเป็นพยาบาล 🩺</span></div>
             </div>
 
-            <div class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> ความฝัน & ทักษะ</div>
-            <div class="info-grid">
-                <div class="info-item" style="grid-column: span 2;"><i class="fa-solid fa-user-nurse"></i> <span class="info-label">อาชีพในฝัน:</span> พยาบาล 🩺</div>
-                <div class="info-item"><i class="fa-solid fa-microphone"></i> <span class="info-label">ทักษะ:</span> ร้องเพลง</div>
-                <div class="info-item"><i class="fa-solid fa-pen-nib"></i> <span class="info-label">ทักษะ:</span> วาดรูป</div>
+            <div class="section-title"><i class="fa-solid fa-users"></i> Best Friends</div>
+            <div class="tag-container">
+                <span class="tag">ปั้นหยา</span>
+                <span class="tag">อิ่มเอม</span>
+                <span class="tag">แก้มหอม</span>
+                <span class="tag">เมกาน</span>
             </div>
 
-            <div class="section-title"><i class="fa-solid fa-heart"></i> แก๊งเพื่อนสนิท</div>
-            <div class="friends-list">
-                <span class="friend-tag">💖 ปั้นหยา</span>
-                <span class="friend-tag">💖 อิ่มเอม</span>
-                <span class="friend-tag">💖 แก้มหอม</span>
-                <span class="friend-tag">💖 เมกาน</span>
+            <div class="footer">
+                <p>Designed with ❤️ for น้องสตางค์</p>
+                <p>Nice to meet you! ✨🎀🌟</p>
             </div>
-
-            <p class="footer-tag">Nice to meet you! ✨ ยินดีที่ได้รู้จักค่ะ</p>
         </div>
     </div>
 
