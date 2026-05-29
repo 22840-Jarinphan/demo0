@@ -3,255 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile | จรินทร์พรรณ แก้วเคียงคำ</title>
+    <title>Magical Profile | Satang</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Itim&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <style>
         :root {
-            --primary-color: #ff4d4d; 
-            --secondary-color: #ffffff;
-            --accent-color: #ffcccc;
-            --text-dark: #2d3436;
-            --bg-soft: #fff5f5;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Kanit', sans-serif;
+            --primary-pink: #ff85a2;
+            --magic-red: #d90429;
+            --soft-white: #fffafa;
+            --sparkle-gold: #ffd700;
         }
 
         body {
-            background: #ffebeb;
+            margin: 0;
+            padding: 20px;
             min-height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px;
+            font-family: 'Kanit', sans-serif;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* --- Anime Background Elements --- */
-        .anime-decor {
+        /* เอฟเฟกต์ประกายระยิบระยับ (Sparkle Particles) */
+        .sparkle {
+            position: fixed;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fly 10s infinite linear;
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        @keyframes fly {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* ตัวละครอนิเมะลอยไปมา */
+        .floating-anime {
             position: fixed;
             font-size: 40px;
-            z-index: -1;
-            opacity: 0.6;
-            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));
+            animation: float-around 15s infinite ease-in-out;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
+        @keyframes float-around {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, 100px) rotate(10deg); }
+            50% { transform: translate(-50px, 200px) rotate(-10deg); }
+            75% { transform: translate(30px, -100px) rotate(5deg); }
         }
 
-        /* --- Profile Card --- */
         .profile-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             width: 100%;
-            max-width: 550px;
+            max-width: 500px;
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(255, 77, 77, 0.15);
+            box-shadow: 0 20px 50px rgba(230, 57, 70, 0.3);
             border: 4px solid white;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(5px);
         }
 
         .header-bg {
-            background: linear-gradient(135deg, #ff4d4d 0%, #d90429 100%);
-            height: 160px;
-            position: relative;
+            background: linear-gradient(45deg, #ff4d4d, #d90429, #ff85a2);
+            height: 150px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
+            padding-bottom: 20px;
         }
 
-        /* ตกแต่งด้วยรูปอนิเมะใน Header */
-        .header-bg::before {
-            content: "🎨✨🎵";
-            font-size: 50px;
-            opacity: 0.3;
-        }
-
-        .profile-img {
+        .profile-img-container {
             width: 140px;
             height: 140px;
-            background: #fff;
+            background: white;
             border-radius: 50%;
-            position: absolute;
-            bottom: -70px;
-            border: 6px solid white;
+            border: 5px solid #fff;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-bottom: -70px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
             overflow: hidden;
         }
 
-        .profile-img i {
+        .profile-img-container i {
             font-size: 70px;
-            color: var(--primary-color);
+            color: var(--magic-red);
         }
 
         .content {
-            padding: 80px 30px 40px;
+            padding: 80px 25px 30px;
+            text-align: center;
         }
 
         .main-title {
-            text-align: center;
-            margin-bottom: 30px;
+            font-size: 1.8rem;
+            color: var(--magic-red);
+            text-shadow: 2px 2px 0px rgba(255,255,255,1);
         }
 
-        .name {
-            font-size: 1.8rem;
-            color: var(--text-dark);
+        .school-info {
+            background: var(--magic-red);
+            color: white;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Grouping Sections */
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: #fff0f3;
+            padding: 12px;
+            border-radius: 15px;
+            border-bottom: 3px solid #ffccd5;
+        }
+
+        .info-box h3 {
+            font-size: 0.85rem;
+            color: #ff4d6d;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .info-box p {
+            font-size: 1rem;
+            color: #1d3557;
             font-weight: 600;
         }
 
         .motto {
+            margin-top: 25px;
             font-family: 'Itim', cursive;
-            color: #d90429;
             font-size: 1.2rem;
-            margin-top: 10px;
+            color: var(--magic-red);
+            background: white;
+            padding: 10px;
+            border-radius: 50px;
+            border: 2px dashed var(--magic-red);
         }
 
-        /* --- Category Sections --- */
-        .section-box {
-            background: var(--bg-soft);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid var(--accent-color);
-        }
-
-        .section-title {
-            font-size: 1.1rem;
-            color: #d90429;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 2px dashed var(--accent-color);
-            padding-bottom: 5px;
-        }
-
-        .grid-info {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .info-item {
-            font-size: 0.95rem;
-            color: #444;
-        }
-
-        .info-item strong {
-            color: var(--text-dark);
-        }
-
-        /* --- Tags Style --- */
-        .tag-container {
+        .friends-list {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 5px;
+            justify-content: center;
+            margin-top: 10px;
         }
 
         .tag {
             background: white;
-            color: var(--primary-color);
+            border: 1px solid #ffccd5;
             padding: 4px 12px;
             border-radius: 15px;
             font-size: 0.85rem;
-            border: 1px solid var(--accent-color);
+            color: #c9184a;
         }
 
-        .hobby-tag { background: #ffe3e3; }
-        .skill-tag { background: #fff0f0; border: 1px solid #ff4d4d; }
+        .full-width { grid-column: span 2; }
 
-        .footer {
-            text-align: center;
-            font-size: 0.85rem;
-            color: #aaa;
-            margin-top: 20px;
-        }
-
-        /* Responsive */
-        @media (max-width: 480px) {
-            .grid-info { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
 
-    <div class="anime-decor" style="top: 10%; left: 5%;">🦊</div>
-    <div class="anime-decor" style="top: 20%; right: 10%; animation-delay: 1s;">🌸</div>
-    <div class="anime-decor" style="bottom: 15%; left: 8%; animation-delay: 2s;">⭐</div>
-    <div class="anime-decor" style="bottom: 10%; right: 5%; animation-delay: 1.5s;">🎨</div>
+    <script>
+        for (let i = 0; i < 30; i++) {
+            let div = document.createElement('div');
+            div.className = 'sparkle';
+            div.style.left = Math.random() * 100 + 'vw';
+            div.style.width = div.style.height = Math.random() * 5 + 3 + 'px';
+            div.style.animationDelay = Math.random() * 10 + 's';
+            document.body.appendChild(div);
+        }
+    </script>
 
-    <div class="profile-card">
+    <div class="floating-anime" style="top: 10%; left: 10%; animation-duration: 12s;">🎀</div>
+    <div class="floating-anime" style="top: 70%; right: 10%; animation-duration: 18s;">✨</div>
+    <div class="floating-anime" style="top: 40%; left: 80%; animation-duration: 15s;">🐱</div>
+    <div class="floating-anime" style="top: 20%; right: 20%; animation-duration: 20s;">🎨</div>
+
+    <div class="profile-card animate__animated animate__zoomIn">
         <div class="header-bg">
-            <div class="profile-img">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <div class="profile-img-container">
+                <i class="fa-solid fa-wand-sparkles"></i>
             </div>
         </div>
 
         <div class="content">
-            <div class="main-title">
-                <h1 class="name">ด.ญ.จรินทร์พรรณ แก้วเคียงคำ</h1>
-                <p style="color: #666;">ชื่อเล่น: <strong>สตางค์</strong> | ม.3/2 จอมทอง</p>
-                <p class="motto">"คติ: ความพยายามอยู่ที่ไหน ความสำเร็จอยู่ที่นั่น"</p>
-            </div>
+            <h1 class="main-title">น้องสตางค์ ✨</h1>
+            <p style="color: #666; margin-bottom: 5px;">ด.ญ.จรินทร์พรรณ แก้วเคียงคำ</p>
+            <div class="school-info">โรงเรียนจอมทอง | ชั้น ม.3/2</div>
 
-            <div class="section-box">
-                <h3 class="section-title"><i class="fa-solid fa-user"></i> ข้อมูลส่วนตัว</h3>
-                <div class="grid-info">
-                    <div class="info-item"><strong>เพศ:</strong> หญิง</div>
-                    <div class="info-item"><strong>วันเกิด:</strong> 17 ต.ค. 2554</div>
-                    <div class="info-item"><strong>กรุ๊ปเลือด:</strong> O</div>
-                    <div class="info-item"><strong>ราศี:</strong> ตุลย์</div>
-                    <div class="info-item"><strong>ส่วนสูง:</strong> 162 ซม.</div>
-                    <div class="info-item"><strong>บ้านเกิด:</strong> เชียงใหม่</div>
+            <div class="section-grid">
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-cake-candles"></i> วันเกิด</h3>
+                    <p>17 ต.ค. 2554</p>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-star"></i> ราศี/เลือด</h3>
+                    <p>ตุลย์ | O</p>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-ruler-vertical"></i> ส่วนสูง</h3>
+                    <p>162 ซ.ม.</p>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-map-location-dot"></i> ภูมิลำเนา</h3>
+                    <p>เชียงใหม่</p>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-heart"></i> สี/อาหาร</h3>
+                    <p>แดง | ข้าวคลุกกะปิ</p>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-flask"></i> วิชาที่รัก/ยาก</h3>
+                    <p>วิทยาศาสตร์</p>
+                </div>
+
+                <div class="info-box full-width">
+                    <h3><i class="fa-solid fa-palette"></i> งานอดิเรก & ทักษะ</h3>
+                    <p>ดูอนิเมะ (Servamp), วาดรูป, ร้องเพลง, กีฬาเปตอง</p>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-music"></i> เพลง/กิจกรรม</h3>
+                    <p>YOUNGOHM / Karaoke</p>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-user-nurse"></i> โตขึ้นอยากเป็น</h3>
+                    <p>พยาบาล</p>
+                </div>
+
+                <div class="info-box full-width" style="text-align: center;">
+                    <h3><i class="fa-solid fa-users-heart"></i> Best Friends</h3>
+                    <div class="friends-list">
+                        <span class="tag">ปั้นหยา</span>
+                        <span class="tag">อิ่มเอม</span>
+                        <span class="tag">แก้มหอม</span>
+                        <span class="tag">เมกาน</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="section-box">
-                <h3 class="section-title"><i class="fa-solid fa-graduation-cap"></i> การเรียน & เป้าหมาย</h3>
-                <div class="info-item" style="margin-bottom: 8px;"><strong>วิชาที่ชอบ:</strong> วิทยาศาสตร์ 🧬</div>
-                <div class="info-item" style="margin-bottom: 8px;"><strong>วิชาที่ท้าทาย:</strong> วิทยาศาสตร์ (ยากแต่ชอบ!)</div>
-                <div class="info-item" style="margin-bottom: 8px;"><strong>ชมรม:</strong> Karaoke 🎤</div>
-                <div class="info-item"><strong>ความฝัน:</strong> พยาบาล 🏥</div>
+            <div class="motto">
+                "ความพยายามอยู่ที่ไหน ความสำเร็จอยู่ที่นั่น"
             </div>
 
-            <div class="section-box">
-                <h3 class="section-title"><i class="fa-solid fa-heart"></i> Lifestyle</h3>
-                <div class="info-item"><strong>งานอดิเรก:</strong></div>
-                <div class="tag-container">
-                    <span class="tag hobby-tag">ดูอนิเมะ</span>
-                    <span class="tag hobby-tag">วาดรูป</span>
-                    <span class="tag hobby-tag">ร้องเพลง</span>
-                </div>
-                <div class="info-item" style="margin-top: 10px;"><strong>อนิเมะ/ซีรีส์:</strong> เซอร์แวมพ์ (Servamp)</div>
-                <div class="info-item"><strong>เพลงที่ชอบ:</strong> YOUNGOHM 🎶</div>
-                <div class="info-item"><strong>อาหารโปรด:</strong> ข้าวคลุกกะปิ</div>
-                <div class="info-item"><strong>กีฬา:</strong> เปตอง 🏐</div>
-            </div>
-
-            <div class="section-box" style="background: #fff;">
-                <h3 class="section-title"><i class="fa-solid fa-users"></i> Best Friends</h3>
-                <div class="tag-container">
-                    <span class="tag skill-tag">ปั้นหยา</span>
-                    <span class="tag skill-tag">อิ่มเอม</span>
-                    <span class="tag skill-tag">แก้มหอม</span>
-                    <span class="tag skill-tag">เมกาน</span>
-                </div>
-            </div>
-
-            <p class="footer">สร้างสรรค์ด้วยความพยายาม ✨ Nice to meet you!</p>
+            <p style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">Nice to meet you! ✨</p>
         </div>
     </div>
 
