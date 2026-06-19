@@ -58,7 +58,7 @@
         .profile-card {
             background: rgba(255, 255, 255, 0.95);
             width: 100%;
-            max-width: 900px; /* เพิ่มความกว้างการ์ดเล็กน้อยให้สมดุลกับรูป */
+            max-width: 850px;
             border-radius: 30px;
             box-shadow: 0 20px 50px rgba(230, 57, 70, 0.15);
             overflow: hidden;
@@ -72,26 +72,27 @@
         /* Left Side: Header & Basic Info */
         .sidebar {
             flex: 1;
-            min-width: 320px;
+            min-width: 300px;
             background: #fff0f3;
-            padding: 40px 30px;
+            padding: 40px 25px;
             text-align: center;
             border-right: 1px dashed var(--primary-pink);
         }
 
-        /* CSS สำหรับรูปภาพหลักและการจัดวางใหม่ */
+        /* ปรับขนาดกรอบรูปใหม่ให้กะทัดรัด ไม่บังตัวหนังสือ */
         .profile-img-container {
-            width: 400px; /* ขนาดกว้างตามที่ต้องการ */
-            height: 250px; /* ขนาดสูงตามที่ต้องการ */
+            width: 160px;
+            height: 160px;
             margin: 0 auto 20px;
             background: white;
-            border-radius: 20px;
+            border-radius: 50%; /* เปลี่ยนเป็นทรงกลมสไตล์มินิมอล */
             border: 5px solid var(--primary-pink);
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 15px rgba(255, 133, 161, 0.2);
         }
 
         .profile-main-img {
@@ -103,32 +104,34 @@
 
         .bunny-corner {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
-            font-size: 35px;
+            bottom: 5px;
+            right: 5px;
+            font-size: 30px;
             filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
             z-index: 2;
         }
 
         .name-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--primary-red);
             font-weight: 600;
+            margin-bottom: 5px;
         }
 
         .school-info {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #666;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .motto-box {
             background: var(--primary-red);
             color: white;
-            padding: 15px;
+            padding: 12px;
             border-radius: 15px;
-            font-size: 0.9rem;
-            margin-top: 20px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            margin-bottom: 20px;
             font-family: 'Mali', cursive;
             position: relative;
         }
@@ -141,12 +144,12 @@
         }
 
         .section-title {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--primary-red);
             border-bottom: 2px solid var(--soft-pink);
             padding-bottom: 5px;
             margin-bottom: 15px;
-            margin-top: 25px;
+            margin-top: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -211,13 +214,12 @@
     <div class="profile-card">
         <div class="sidebar">
             <div class="profile-img-container">
-                <!-- ใส่ลิงก์รูปภาพโปรไฟล์ของคุณสตางค์เรียบร้อยแล้ว -->
                 <img src="https://pbs.twimg.com/media/FGSsme9UcAAE9i_.jpg" alt="รูปภาพสตางค์" class="profile-main-img">
                 <div class="bunny-corner">🐰</div>
             </div>
             <h1 class="name-title">ด.ญ.จรินทร์พรรณ แก้วเคียงคำ</h1>
             <p class="school-info">ชื่อเล่น: <b>สตางค์</b> | ชั้น ม.3/2</p>
-            <p style="color: #888;"><i class="fa-solid fa-school"></i> โรงเรียนจอมทอง</p>
+            <p style="color: #888; font-size: 0.9rem; margin-bottom: 15px;"><i class="fa-solid fa-school"></i> โรงเรียนจอมทอง</p>
 
             <div class="motto-box">
                 <i class="fa-solid fa-quote-left" style="opacity: 0.5;"></i><br>
@@ -226,7 +228,7 @@
             </div>
 
             <div class="section-title"><i class="fa-solid fa-address-card"></i> ข้อมูลทั่วไป</div>
-            <div style="text-align: left; font-size: 0.9rem;">
+            <div style="text-align: left; font-size: 0.9rem; padding-left: 5px; line-height: 1.6;">
                 <p><b>เพศ:</b> หญิง | <b>กรุ๊ปเลือด:</b> O</p>
                 <p><b>วันเกิด:</b> 17 ตุลาคม 2554</p>
                 <p><b>ราศี:</b> ตุลย์ | <b>ส่วนสูง:</b> 162 ซ.ม.</p>
