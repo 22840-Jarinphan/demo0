@@ -196,8 +196,7 @@
 </head>
 <body>
 
-
-    <img src="ใส่ลิงก์รูปภาพตรงนี้.jpg" alt="Student Photo" style="width: 400px; height: 250px; object-fit: cover; border-radius: 15px; border: 4px solid var(--soft-pink); box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+    <img src="image_0.png" alt="ตัวละครอนิเมะ" style="height: 250px; width: 400px; object-fit: cover;">
 
     <div class="profile-card">
         <div class="sidebar">
