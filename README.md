@@ -198,8 +198,6 @@
 
 
     <img src="ใส่ลิงก์รูปภาพตรงนี้.jpg" alt="Student Photo" style="width: 400px; height: 250px; object-fit: cover; border-radius: 15px; border: 4px solid var(--soft-pink); box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-</div>
-    
 
     <div class="profile-card">
         <div class="sidebar">
