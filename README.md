@@ -196,12 +196,10 @@
 </head>
 <body>
 
-    <div class="decoration bunny" style="top: 10%; left: 10%;">🐰</div>
-    <div class="decoration bunny" style="bottom: 15%; right: 10%;">🐰</div>
-    <div class="decoration sakura" style="top: 20%; right: 20%;"><i class="fa-solid fa-leaf"></i></div>
-    <div class="decoration sakura" style="bottom: 20%; left: 15%;"><i class="fa-solid fa-leaf"></i></div>
-    <div class="decoration sparkle" style="top: 30%; left: 25%;">✨</div>
-    <div class="decoration sparkle" style="bottom: 40%; right: 25%;">✨</div>
+
+    <img src="ใส่ลิงก์รูปภาพตรงนี้.jpg" alt="Student Photo" style="width: 400px; height: 250px; object-fit: cover; border-radius: 15px; border: 4px solid var(--soft-pink); box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+</div>
+    
 
     <div class="profile-card">
         <div class="sidebar">
