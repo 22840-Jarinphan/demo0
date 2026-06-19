@@ -35,25 +35,6 @@
             position: relative;
         }
 
-        /* Animation Elements */
-        .decoration {
-            position: fixed;
-            pointer-events: none;
-            z-index: 0;
-            filter: drop-shadow(0 0 5px rgba(255,255,255,0.8));
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(20px, -20px) rotate(10deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
         /* Profile Card */
         .profile-card {
             background: rgba(255, 255, 255, 0.95);
@@ -69,7 +50,7 @@
             flex-wrap: wrap;
         }
 
-        /* Left Side: Header & Basic Info */
+        /* Left Side */
         .sidebar {
             flex: 1;
             min-width: 300px;
@@ -86,15 +67,15 @@
             background: white;
             border-radius: 50%;
             border: 5px solid var(--primary-pink);
-            display: flex;
-            justify-content: center;
-            align-items: center;
             position: relative;
+            overflow: hidden; /* Important for circular image */
         }
 
-        .profile-img-container i {
-            font-size: 80px;
-            color: var(--primary-red);
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Keeps aspect ratio */
+            border-radius: 50%;
         }
 
         .profile-img-container::after {
@@ -128,7 +109,7 @@
             position: relative;
         }
 
-        /* Right Side: Details */
+        /* Right Side */
         .main-content {
             flex: 1.5;
             min-width: 350px;
@@ -160,7 +141,7 @@
 
         .info-label { font-weight: 600; color: #555; }
 
-        /* Pills/Tags */
+        /* Tags */
         .tag-container {
             display: flex;
             flex-wrap: wrap;
@@ -180,28 +161,14 @@
 
         .skill-tag { background: #e0f2f1; color: #00796b; border-color: #b2dfdb; }
 
-        /* Printing A4 Support */
-        @media print {
-            body { background: white; padding: 0; }
-            .profile-card { box-shadow: none; border: 1px solid #eee; }
-            .decoration { display: none; }
-        }
-
-        /* Floating Items */
-        .bunny { font-size: 30px; animation: float 6s infinite ease-in-out; }
-        .sakura { color: #ffb7c5; font-size: 20px; animation: float 8s infinite linear; }
-        .sparkle { color: gold; font-size: 15px; animation: sparkle 2s infinite; }
-
     </style>
 </head>
 <body>
 
-    <img src="image_0.png" alt="ตัวละครอนิเมะ" style="height: 250px; width: 400px; object-fit: cover;">
-
     <div class="profile-card">
         <div class="sidebar">
             <div class="profile-img-container">
-                <i class="fa-solid fa-user-graduate"></i>
+                <img src="image_0.png" alt="จรินทร์พรรณ แก้วเคียงคำ">
             </div>
             <h1 class="name-title">ด.ญ.จรินทร์พรรณ แก้วเคียงคำ</h1>
             <p class="school-info">ชื่อเล่น: <b>สตางค์</b> | ชั้น ม.3/2</p>
@@ -212,6 +179,8 @@
                 "ความพยายามอยู่ที่ไหน ความสำเร็จอยู่ที่นั่น"<br>
                 <i class="fa-solid fa-quote-right" style="opacity: 0.5; float: right;"></i>
             </div>
+
+            <div class="section-title"><i class="fa-solid fa-address-card"></i> ข้อมูลทั่วไปhttp://googleusercontent.com/image_generation_content/0
 
             <div class="section-title"><i class="fa-solid fa-address-card"></i> ข้อมูลทั่วไป</div>
             <div style="text-align: left; font-size: 0.9rem;">
@@ -252,11 +221,6 @@
                 <span class="tag" style="background: white;">อิ่มเอม</span>
                 <span class="tag" style="background: white;">แก้มหอม</span>
                 <span class="tag" style="background: white;">เมกาน</span>
-            </div>
-
-            <div class="section-title"><i class="fa-solid fa-image"></i> รูปภาพของฉัน</div>
-            <div style="text-align: center; margin-top: 15px;">
-                <img src="ใส่ลิงก์รูปภาพตรงนี้.jpg" alt="Student Photo" style="width: 400px; height: 250px; object-fit: cover; border-radius: 15px; border: 4px solid var(--soft-pink); box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
             </div>
 
         </div>
